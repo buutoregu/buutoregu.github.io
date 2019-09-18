@@ -1,7 +1,7 @@
 # Site settings
 title: AlyHu's Blog
 SEOTitle: AlyHu's Blog
-header-img: img/post-bg-desk.jpg
+header-img: img/background.JPG
 email: huyuqian1997@gmail.com
 description: "Here is where we begin"
 keyword: "alyhu, yuqianhu, 胡郁芊的博客, huyuqian, 胡郁芊"
@@ -12,7 +12,7 @@ github_repo: "https://github.com/qiubaiying/qiubaiying.github.io.git" # your cod
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
 sidebar-about-description: "Yuqian(Aly) Hu, current student at Fuqua Business school"
-sidebar-avatar: /img/about-BY-gentle.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-avatar: /img/profilephoto.JPG      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 
