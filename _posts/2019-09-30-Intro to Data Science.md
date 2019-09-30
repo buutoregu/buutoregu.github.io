@@ -1,3 +1,16 @@
+---
+layout:     post
+title:      Intro to Data Science
+subtitle:   Data science in business world
+date:       9-30-2019
+author:     Aly Hu
+header-img: img/post-bg-ios9-web.jpg
+catalog: 	 true
+tags:
+    - Data Science
+    - Business
+---
+
 # Data Science in Business World
 
 This part covers the first 2 classes in data science course.
