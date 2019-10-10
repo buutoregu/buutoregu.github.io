@@ -1,14 +1,14 @@
 ---
 layout:     post
-title:      Intro to Data Science
-subtitle:   Data science in business world
-date:       9-30-2019
+title:      Model Selection
+subtitle:   Out of sample metrics and cross validation
+date:       10-9-2019
 author:     Aly Hu
 header-img: img/post-bg-ios9-web.jpg
 catalog: 	 true
 tags:
-    - Data Science
-    - Business
+    - OOS
+    - Cross Validation
 ---
 
 #Model Selection
