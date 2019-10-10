@@ -2,7 +2,7 @@
 layout:     post
 title:      Intro to Data Science
 subtitle:   Data science in business world
-date:       9-30-2019
+date:       2019-09-30
 author:     Aly Hu
 header-img: img/post-bg-ios9-web.jpg
 catalog: 	 true
