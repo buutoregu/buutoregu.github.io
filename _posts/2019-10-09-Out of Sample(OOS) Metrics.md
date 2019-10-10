@@ -2,7 +2,7 @@
 layout:     post
 title:      Model Selection
 subtitle:   Out of sample metrics and cross validation
-date:       10-9-2019
+date:       2019-10-9
 author:     Aly Hu
 header-img: img/post-bg-ios9-web.jpg
 catalog: 	 true
