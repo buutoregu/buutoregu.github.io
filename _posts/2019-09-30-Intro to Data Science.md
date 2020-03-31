@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Intro to Data Science
+title:      Data Science Notes 1
 subtitle:   Data science in business world
 date:       2019-09-30
 author:     Aly Hu
