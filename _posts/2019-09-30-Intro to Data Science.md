@@ -11,7 +11,7 @@ tags:
     - Business
 ---
 
-# Data Science in Business World
+# Data Science in the Business World
 
 This part covers the first 2 classes in data science course.
 
