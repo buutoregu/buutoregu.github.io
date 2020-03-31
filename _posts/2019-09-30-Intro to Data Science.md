@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      Data Science Notes 1
-subtitle:   Data science in business world
+title:      Data Science Class Notes
+subtitle:   Data science in the business world
 date:       2019-09-30
 author:     Aly Hu
 header-img: img/post-bg-ios9-web.jpg
