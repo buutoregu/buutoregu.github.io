@@ -11,9 +11,6 @@ tags:
     - Cross Validation
 ---
 
-
-#Model Selection
-
 Now we have several models to make prediction for us. But how do we evaluate them? 
 
 
