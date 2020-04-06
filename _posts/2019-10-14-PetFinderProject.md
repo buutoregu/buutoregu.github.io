@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      Predicting Adoption Speed for PetFinder
-subtitle:   A multi-classification problem
+subtitle:   A multi-class classification problem
 date:       2019-10-14
 author:     Aly Hu
 header-img: img/petFinderPic2.jpg
