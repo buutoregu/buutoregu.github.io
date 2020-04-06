@@ -4,7 +4,7 @@ title:      Predicting Adoption Speed for PetFinder
 subtitle:   A multi-classification problem
 date:       2019-10-14
 author:     Aly Hu
-header-img: img/petFinderPic.jpg
+header-img: img/petFinderPic2.jpg
 catalog: true
 tags:
     - Project
