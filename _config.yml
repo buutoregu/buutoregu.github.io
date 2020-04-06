@@ -12,7 +12,7 @@ github_repo: "https://github.com/AlyyHu/Alyyhu.github.io.git" # your code reposi
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
 sidebar-about-description: "Yuqian(Aly) Hu, Current student at Duke University, MQM Business Analytics Class of 2020 <br/> STEM | Seeking Full-time Data Analyst Jobs in 2020"
-sidebar-avatar: AlyyHu.github.io/img/profile.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-avatar: AlyyHu.github.io/img/profilenew-2.jpg     # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 
