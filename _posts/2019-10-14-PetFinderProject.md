@@ -1,4 +1,20 @@
-#Predicting Adoption Speed for PetFinder
+---
+layout:     post
+title:      [Project] Predicting Adoption Speed for PetFinder
+subtitle:   A multi-classification problem
+date:       2019-10-14
+author:     Aly Hu
+header-img: img/petFinderPic.jpg
+catalog: true
+tags:
+    - Project
+    - Cross Validation
+    - R
+    - Random Forest
+    - SVM
+    - Multinomial Logistic Regression
+    - Classification
+---
 
 **This is a team project. Co-authors are [Jiali Yin](https://www.linkedin.com/in/jiali-yin/), [Xinyi Zhu](https://www.linkedin.com/in/xinyi-zhu/), [Linsay Trinh](https://www.linkedin.com/in/lindsay-trinh/), [Shangyun Song](https://www.linkedin.com/in/shangyun-song/) and [Yasi Chen](https://www.linkedin.com/in/yasi-chen-214a8418a/).**
 
@@ -8,17 +24,20 @@ According to PetFinder’s 2018 Financial Report, approximately 70% of its total
 
 ##Data Preparation
 
-This dataset originally consists of **14,993 observations** and **24 variables**. All the data are based in the **Malaysia** area so our analysis is country-specific and culture-oriented. We removed the variable Name since we assume it is irrelevant to the pet’s adoption speed. Other than Name, we removed State, PetID, and RescuerID for the same reason. In addition, some columns such as Breed1 and Type are coded as numbers with an additional reference spreadsheet provided. For clarification reasons, we convert Type and Gender intostrings: we coded “1” as “Dog” and “2” as “Cat”; For Gender, we coded “1” as “Male”, “2” as “Female”, and “3” as “Mixed”. The mixed represents the gender of a profile of pets. We also changed categorical variables into dummy variables. Besides, we conduct a chi-squared test to test the correlation among Color1, Color 2, and Color3, the result shows that they are dependent on each other. Therefore, we plan to remain Color1 and remove the other two. Finally, considering only 0.38% of records have Breed2, we remove Breed2 for simplicity reasons.
+This dataset originally consists of **14,993 observations** and **24 variables**. All the data are based in the **Malaysia** area so our analysis is country-specific and culture-oriented. We removed the variable Name since we assume it is irrelevant to the pet’s adoption speed. Other than Name, we removed State, PetID, and RescuerID for the same reason. In addition, some columns such as Breed1 and Type are coded as numbers with an additional reference spreadsheet provided. For clarification reasons, we convert Type and Gender into
+strings: we coded “1” as “Dog” and “2” as “Cat”; For Gender, we coded “1” as “Male”, “2” as “Female”, and “3” as “Mixed”. The mixed represents the gender of a profile of pets. We also changed categorical variables into dummy variables. Besides, we conduct a chi-squared test to test the correlation among Color1, Color 2, and Color3, the result shows that they are dependent on each other. Therefore, we plan to remain Color1 and remove the other two. Finally, considering only 0.38% of records have Breed2, we remove Breed2 for simplicity reasons.
 
 Besides, considering that the dataset contains a Description column, we applied text analytics to this column. Based on the analytics, we select the 10 most frequently occurring words and create an additional 10 columns based on these hot words. We check if each pet’s description contains these 10 words individually. If any word is matched in the description, we assign “1” under that column. We assign “0” if it does not. These 10 words are: love, kitten, puppi, rescu, healthi, activ, cute, train, mother, kind. Finally, we all agree that the length of a description may be an important factor as well. Since the more detailed the description is, the less time it takes adopters to pick the pet. Logically, adopters tend to make decisions quicker if the available information is richer. Therefore, our final dataset consists of **14,993 records** and **29 variables**.
 
 ##Data Exploration
 ###Text Analysis
 
-Based on the text analytics, we first created a text cloud to capture the most frequent word in the Description column. It turns out that “adopt” appears most frequently, followed by words“kitten”, “puppi” and “cute”. From the word cloud, we can summarize the major characteristics of those pets in our dataset.
+Based on the text analytics, we first created a text cloud to capture the most frequent word in the Description column. It turns out that “adopt” appears most frequently, followed by words
+“kitten”, “puppi” and “cute”. From the word cloud, we can summarize the major characteristics of those pets in our dataset.
 
 ![Text Analysis](https://tva1.sinaimg.cn/large/00831rSTgy1gdkkm993zej30ge0gin7s.jpg)
-Next, we created bigrams to capture more patterns in the text. The most frequent bigram is “month old”, and we pick 10 most intriguing words and plot them in a bar chart.
+
+Next, we created bigrams to capture more patterns in the text. The most frequent bigram is “month old”, and we pick 10 most intriguing words and plot them in a bar chart.
 
 ![Words](https://tva1.sinaimg.cn/large/00831rSTgy1gdkkw1x8lqj30no0gqack.jpg)
 
