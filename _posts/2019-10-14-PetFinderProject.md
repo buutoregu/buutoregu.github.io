@@ -16,6 +16,8 @@ tags:
 
 The dataset was provided by **PetFinder**, a non-profit organization, who aims to improve animal welfare through collaborations with related parties.The core task of this project is to predict how long it will take for a pet to be adopted. The original dataset can be found on [Kaggle](https://www.kaggle.com/ivotimev/petfinder-adoption-prediction-segmented-1#train_preprocessed.csv). 
 
+**Code** can be found on my [github](https://github.com/AlyyHu/Course-Project/tree/master/R_PetFinder).
+
 According to PetFinder’s 2018 Financial Report, approximately 70% of its total public support gained and revenues earned will be spent on its public welfare programs, including this animal adoption program. Our defined business problem is **“When new pets come in, what would be the estimated time for new pets to be adopted."** Based on different traits each pet has, we could estimate how long it takes for the pet to be adopted according to the model we created. Therefore, by adopting our model, the company can guide shelters and rescuers who post information about animals through the channel on estimating the adoption speed for new animals. Once the pet adoption speed is predicted well, more efficient resource allocation can be implemented to improve the overall adoption performance, and subsequently, reduce the costs of sheltering and fostering. Eventually PetFinder will receive more financial support and make a greater contribution to the global animal benefit.
 
 ## Data Preparation
