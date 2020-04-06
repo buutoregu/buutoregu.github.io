@@ -8,7 +8,7 @@ header-img: img/petFinderPic.jpg
 catalog: true
 tags:
     - Project
-    - Cross Validation
+    - R
     
 ---
 
