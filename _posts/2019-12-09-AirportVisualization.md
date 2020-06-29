@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      [Project] Austin-Bergstorm International Expansion Plan
+title:      Austin-Bergstorm International Expansion Plan
 subtitle:   Using visualizations developing business strategies
 date:       2019-12-09
 author:     Aly Hu
