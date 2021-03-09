@@ -1,9 +1,9 @@
 # Site settings
 title: YvonneLiu's Blog
 SEOTitle: YvonneLiu's Blog
-header-img: buutoregu.github.io/img/background.JPG
+header-img: buutoregu.github.io/img/background.jpg
 email: yvonneliu0329@outlook.com
-description: "d"
+description: ""
 keyword: "yvonneliu"
 url: "http://buutoregu.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
