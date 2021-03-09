@@ -3,7 +3,7 @@ layout:     post
 title:      Austin-Bergstrom International Expansion Plan
 subtitle:   Using visualizations developing business strategies
 date:       2019-12-09
-author:     Aly Hu
+author:     Yvonne Liu
 header-img: img/ausairport.jpg
 catalog: true
 tags:
@@ -12,7 +12,7 @@ tags:
     
 ---
 
-**This is a team project. Co-authors are [Jiali Yin](https://www.linkedin.com/in/jiali-yin/), [Xinyi Zhu](https://www.linkedin.com/in/xinyi-zhu/), [Linsay Trinh](https://www.linkedin.com/in/lindsay-trinh/), [Shangyun Song](https://www.linkedin.com/in/shangyun-song/) and [Jingwen Liu](https://www.linkedin.com/in/jingwen-yvonne-liu-a50148176/). The original tbwx file exceeds the size limitation on Tableau Public, so I used gif images to introduce the interactive functions for each dashboard. The original tbwx file can be found on my [github](https://github.com/AlyyHu/Course-Project/tree/master/Tableau_AUSAirport).** 
+**This is a team project. Co-authors are [Aly Hu](https://www.linkedin.com/in/yuqian-aly-hu/), [Jiali Yin](https://www.linkedin.com/in/jiali-yin/), [Xinyi Zhu](https://www.linkedin.com/in/xinyi-zhu/), [Linsay Trinh](https://www.linkedin.com/in/lindsay-trinh/) and [Shangyun Song](https://www.linkedin.com/in/shangyun-song/). The original tbwx file exceeds the size limitation on Tableau Public, so I used gif images to introduce the interactive functions for each dashboard. The original tbwx file can be found on my [github](https://github.com/AlyyHu/Course-Project/tree/master/Tableau_AUSAirport).** 
 
 ## Summary
 Austin city is one of the fastest growing cities in the nation, both from economic and demographic perspectives. To meet the increasing demand in the airport caused by the rapidly increasing population, AUS introduced a 40-Year Master Expansion Plan around 2000. We analyzed the data of flights departing from or arriving at Austin airport using **Tableau**. Our goal is to give recommendations on how to improve the capacity and efficiency of the airport and develop the AUS 40-years expansion plan. 
