@@ -43,5 +43,54 @@ We decided to first investigated the correlation between each variable by perfor
 ![d_viz_3](https://user-images.githubusercontent.com/78829814/110561295-4acd1400-80fc-11eb-8a5b-986546827b54.jpg)
 
 
+![d_viz_4](https://user-images.githubusercontent.com/78829814/110562625-bd3ef380-80fe-11eb-9cd3-3dd0949e73c2.jpg)
 
+
+## Modeling
+
+### PCA
+
+We used PCA to reduce the number of variables and intended to use the PCA factors in our regression model. Since Principle Component Analysis (PCA) only applies to the numeric variable, we first dropped the 3 categorical variables, cut, color and clarity, from the train dataset and then applied the PCA model. Based on the PCA: Variance Explained by Factors graph, we picked the first 3 factors, which explained most of the variation in the dataset. For each factor picked, we display the top features that are responsible for 3/4 of the squared norm of the loadings, includes x and y in PC1, depth in PC2 and table in PC3. The PCA model did not include the other two numeric variables, z and carat, in the first three factors.
+
+Because each factor contained either a single quantitative variable or a combination of two quantitative variables, we found that it would be nearly as effective, and much simpler, to simply include the variables selected through the PCA factors (x, y, depth, table), add back the categorical variables we dropped previously, and run a linear model that included these variables. 
+
+![PCA](https://user-images.githubusercontent.com/78829814/110563073-8f0de380-80ff-11eb-9e8d-5001e1c3276e.jpg)
+
+
+### Linear with Lasso
+
+We ran Lasso and created 2 linear models based on the variables selected. As the below graph shows, the minimum lasso value gave us 23 variables and 1 standard error lasso value gave us 22 variables. We then created 2 linear model: the minimum model with 23 variables and the 1 standard error model with 22 variables. We picked the minimum model as it has lower AIC score.
+
+![Lasso](https://user-images.githubusercontent.com/78829814/110563204-cc727100-80ff-11eb-9b62-cdae085e0ff9.jpg)
+
+### Quantile Regression
+
+We used 0.1, 0.5, and 0.9 as thresholds for quantile regressions. The R-Squared of 10% quantile regression is 0.41,  50% quantile is 0.78, and 90% quantile is 0.19. All the explanatory variables had heterogeneous impacts across different quantiles. For example, ClarityIF and ClaritySI2 both had positive effects on price, but these coefficients decrease across quantiles, which means their impacts are diminishing. In addition, Carat had increasing positive coefficients across quantiles, and we can see that the impact of carat on high quantiles was twice as large as that on lower quantiles.
+
+![Quantile](https://user-images.githubusercontent.com/78829814/110563400-1e1afb80-8100-11eb-847e-f330e2d4b548.jpg)
+
+### Stepwise Linear Regression
+
+We ran stepwise linear regression on price in our training dataset. The resulting model included carat, clarity, color, z, cut, x, y, table, and depth as explanatory variables and results in an in-sample multiple R-Squared of 0.923. All of the explanatory variables are significant at the 0.05 level. 
+
+### Regression Tree
+
+In order to predict price, we created a regression tree model. We built the original model and found that the ideal tree, with the lowest relative error and cp value, had six levels. 
+
+We then pruned the tree to the height specified. The regression tree found that carat was the most important variable in determining the eventual price of the diamond, followed by the three dimension variables (y,x, and z), and then clarity.  
+
+![regression_tree](https://user-images.githubusercontent.com/78829814/110563514-4c004000-8100-11eb-94be-53ded1661c98.jpg)
+
+## Evaluation
+
+We tested the out-of-sample performance and used R-squared to compare each of the models. We found the linear model that used Lasso variable selection and the linear model that used stepwise variable selection both had the lowest value of OOS R-squared (0.916736). We decided to use the stepwise model, as the Lasso model requires data transformation, as the categorical variables must be in “dummy” form. Thus, the stepwise function requires less effort and is easily interpretable. 
+
+
+## Deployment
+
+The goal of our project is to predict diamond price more accurately over the long term to maximize our company profit.  According to our Stepwise linear  model, the variables that have a significant impact on price were carat, cut, color, clarity, depth, table and x, y ,z.  We could calculate the price by entering each of the variable into a database, that automatically applies the stepwise formula, when new diamonds come in stock. 
+
+However, this dataset does not include the costs related to acquiring and selling the diamonds, the sales volume for each kind of diamond, or the customer demand. Since diamonds are a precious and scarce gemstone, price predicting of diamond is related to diamond source. Also, regions with different cultures and populations will have their own demands on diamonds, which will impact diamond prices differently. Our dataset does not include variables about diamond source and regions, so the predicted price may fail to capture the true market trend of diamond. Additional data is needed to better estimate the selling price and market trends to maximize profit in certain locations.
+
+There is also serious ethical considerations when participating in the sale of diamonds. The diamond industry has long been haunted by social criticism that its business is fueling illegal and inhumane diamond mining in Africa. Although focusing on profit maximization for our own company, we want to make sure our diamonds are coming from a clean ethical source. 
 
