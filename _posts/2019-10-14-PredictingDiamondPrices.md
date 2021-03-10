@@ -34,7 +34,14 @@ We decided to first investigated the correlation between each variable by perfor
 
 ## Data Visualization
 
-![Diamond_viz_1](https://user-images.githubusercontent.com/78829814/110559700-8e724e80-80f9-11eb-99eb-45d58ac6c1fd.jpg)
+![d_viz_1](https://user-images.githubusercontent.com/78829814/110561277-443e9c80-80fc-11eb-8ce5-4a11db97ee5a.jpg)
 
-![diamond_viz_2](https://user-images.githubusercontent.com/78829814/110559785-b5c91b80-80f9-11eb-95aa-708f9fa2d3eb.jpg)
+
+![d_viz_2](https://user-images.githubusercontent.com/78829814/110561286-47d22380-80fc-11eb-9b20-b8e149189704.jpg)
+
+
+![d_viz_3](https://user-images.githubusercontent.com/78829814/110561295-4acd1400-80fc-11eb-8a5b-986546827b54.jpg)
+
+
+
 
