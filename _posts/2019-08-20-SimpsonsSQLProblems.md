@@ -131,7 +131,9 @@ tab2 AS
 SELECT		*,
 		SUM(barney_ind) OVER(ORDER BY episode_id, number) as b_ind_run_sum,
 		CASE
-		WHEN	(SUM(barney_ind) OVER(PARTITION BY episode_id ORDER BY episode_id,number ROWS BETWEEN 3 PRECEDING AND 3 FOLLOWING) > 0) THEN 1
+		WHEN	(SUM(barney_ind) OVER(	PARTITION BY episode_id 
+						ORDER BY episode_id,number 
+						ROWS BETWEEN 3 PRECEDING AND 3 FOLLOWING) > 0) THEN 1
 		ELSE	0
 		END AS 	b_app_ind
 FROM		tab1
@@ -140,8 +142,11 @@ tab3 AS
 (
 SELECT		*,
 		CASE
-		WHEN	(b_app_ind = 1 AND (LAG(b_app_ind) OVER(PARTITION BY episode_id ORDER BY episode_id,number) = 0)) THEN 1
-		WHEN	(b_app_ind = 1 AND (SUM(barney_ind) OVER(PARTITION BY episode_id ORDER BY episode_id,number ROWS BETWEEN 3 PRECEDING AND 2 FOLLOWING) = 0)) THEN 1
+		WHEN	(b_app_ind = 1 AND (LAG(b_app_ind) OVER(PARTITION BY episode_id 
+								ORDER BY episode_id,number) = 0)) THEN 1
+		WHEN	(b_app_ind = 1 AND (SUM(barney_ind) OVER(PARTITION BY episode_id 
+								ORDER BY episode_id,number 
+								ROWS BETWEEN 3 PRECEDING AND 2 FOLLOWING) = 0)) THEN 1
 		ELSE 	0
 		END AS 	start_b_app
 FROM		tab2
