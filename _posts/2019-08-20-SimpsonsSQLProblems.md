@@ -102,3 +102,12 @@ Season      Episode     Title                               Location            
 * First, find all records credited to Barney (character_id=18), including speaking and non-speaking lines (in what is shown below I denote this with “barney_ind”).  
 * Then, consider a “Barney appearance” to consist of the three records before the first instance of barney_ind=1, the three records after the last instance of barney_ind=1, and all records in-between as long as there is no gap of 6 consecutive records or more that are not credited to Barney.  
 * So, let’s run through a couple of examples. 
+
+![1_barney](https://user-images.githubusercontent.com/78829814/110739586-4bda7000-81e6-11eb-8c41-d9329a59b55d.jpg)
+
+* The above yellow block of records would define one “Barney appearance.”  It consists of the three records before the first “barney_ind,” the three records after the last “barney_ind,” and there is no gap of six or more consecutive records with “barney_ind”=0 in between.  Also note that since there is at least one instance of character_id=2 (Homer) in this “Barney appearance,” this appearance would be counted as one “with Homer.” 
+
+
+![2_barney](https://user-images.githubusercontent.com/78829814/110739620-63195d80-81e6-11eb-9ddf-28ce4de19bf1.jpg)
+
+* Here, we have a gap of 6 records between two records with “barney_ind”=1.  So, the blue block of records would correspond with one “Barney appearance” and the yellow block of records would correspond with a second “Barney appearance.”  Again, also note that Homer appears in both of these “Barney appearances.”
