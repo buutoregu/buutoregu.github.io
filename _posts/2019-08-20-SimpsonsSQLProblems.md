@@ -103,7 +103,8 @@ Season      Episode     Title                               Location            
 * Then, consider a “Barney appearance” to consist of the three records before the first instance of barney_ind=1, the three records after the last instance of barney_ind=1, and all records in-between as long as there is no gap of 6 consecutive records or more that are not credited to Barney.  
 * So, let’s run through a couple of examples. 
 
-![1_barney](https://user-images.githubusercontent.com/78829814/110739586-4bda7000-81e6-11eb-8c41-d9329a59b55d.jpg)
+![1_barney](https://user-images.githubusercontent.com/78829814/110739832-ca371200-81e6-11eb-9e82-18f612f1a8f6.jpg)
+
 
 * The above yellow block of records would define one “Barney appearance.”  It consists of the three records before the first “barney_ind,” the three records after the last “barney_ind,” and there is no gap of six or more consecutive records with “barney_ind”=0 in between.  Also note that since there is at least one instance of character_id=2 (Homer) in this “Barney appearance,” this appearance would be counted as one “with Homer.” 
 
