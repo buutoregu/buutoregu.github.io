@@ -67,11 +67,11 @@ tab3 AS
 		SUM(doh_total) OVER(ORDER BY episode_id, number) AS doh_sum
 	FROM	tab2
 	)
-SELECT	episodes.season AS Season,
-	episodes.number_in_season AS Episode,
-        episodes.title AS Title,
-        locations.name AS Location,
-        doh_sum
+SELECT		episodes.season AS Season,
+		episodes.number_in_season AS Episode,
+        	episodes.title AS Title,
+        	locations.name AS Location,
+        	doh_sum
 FROM		tab3
 INNER JOIN	episodes
 ON		tab3.episode_id = episodes.id
@@ -91,3 +91,14 @@ Season      Episode     Title                               Location            
 14          17          Three Guys of the Condo             Apartment           300
 ```
 
+# Problem 2
+
+## Problem Description
+
+**Barney Gumble (character_id=18)** is a funny character on the show who is likely Homer Simpson’s best friend.  Some have argued that Barney “always seems to be stuck in Homer’s shadow” and should be given more “airtime” independent of Homer.  We will investigate this claim.  **Specifically, we want to count the number of Barney’s “appearances” with and without Homer (character_id=2).**  
+
+* A “Barney appearance” will not simply be defined as a record in “script_lines” with character_id=18 - if he has multiple lines in an episode that are relatively close to one another we want consider those lines as being part of the same “appearance.”  
+* Specifically, order your script_lines data by “episode_id” and then by “number” and consider each episode separately in your calculations.  
+* First, find all records credited to Barney (character_id=18), including speaking and non-speaking lines (in what is shown below I denote this with “barney_ind”).  
+* Then, consider a “Barney appearance” to consist of the three records before the first instance of barney_ind=1, the three records after the last instance of barney_ind=1, and all records in-between as long as there is no gap of 6 consecutive records or more that are not credited to Barney.  
+* So, let’s run through a couple of examples. 
