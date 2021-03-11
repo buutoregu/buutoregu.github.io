@@ -22,7 +22,7 @@ Specifically, count all instances of the substring **‘annoyed grunt’** in th
 
 Just to be crystal clear, if a record has 1 instance of ‘annoyed grunt’ in “raw_text” and 1 instance of ‘doh’ in “normalized_text” then that record counts as 2 total.  
 
-Your output should include the season, episode number within the season, episode title, location, and ‘doh counter’ for each of the 100th, 200th, and 300th occurrences (so your output should only have 3 rows).
+Output should include the **season**, **episode number within the season**, **episode title**, **location**, and **‘doh counter’** for each of the 100th, 200th, and 300th occurrences.
 
 ## Query
 
@@ -30,17 +30,17 @@ Your output should include the season, episode number within the season, episode
 WITH tab1 AS
 	(
 	SELECT	id,
-            episode_id,
-            number,
-            character_id,
-          	location_id,
-            ROUND((LENGTH(LOWER(raw_text)) - LENGTH(REPLACE(LOWER(raw_text),
+		episode_id,
+		number, 
+		character_id,
+		location_id,
+		ROUND((LENGTH(LOWER(raw_text)) - LENGTH(REPLACE(LOWER(raw_text),
 				  'annoyed grunt',''))
 				 ) 
 				 / 
 				 LENGTH('annoyed grunt')        
 				) AS count_ag,
-    	COALESCE(ROUND((LENGTH(LOWER(normalized_text)) - LENGTH(REPLACE(LOWER(normalized_text),
+		COALESCE(ROUND((LENGTH(LOWER(normalized_text)) - LENGTH(REPLACE(LOWER(normalized_text),
 				 'doh',''))
 				 ) 
 				 / 
@@ -48,10 +48,10 @@ WITH tab1 AS
 		        ),0) AS count_doh
 	FROM	script_lines
 	WHERE	(raw_text LIKE '%annoyed grunt%' OR
-			 normalized_text LIKE 'doh %' OR
-             normalized_text LIKE '% doh %' OR
-             normalized_text LIKE '% doh') AND
-             character_id = 2
+		normalized_text LIKE 'doh %' OR
+		normalized_text LIKE '% doh %' OR
+		normalized_text LIKE '% doh') AND
+		character_id = 2
 	),
 tab2 AS
 	(		
