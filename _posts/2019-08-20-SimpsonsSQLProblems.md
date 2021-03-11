@@ -20,9 +20,9 @@ tags:
 
 * Be aware that a record in the “script_lines” table can contain multiple instances of “d’oh” and we want to count all of them.  For instance, if Homer says “d’oh, d’oh, d’oh” in one “script_lines” record then that counts as 3 “d’oh,” not 1.  
 
-* Specifically, count all instances of the substring **‘annoyed grunt’** in the “raw_text” field **AND** all instances of the substring **‘doh’** in the “normalized_text” string (recall that ‘annoyed grunt’ in the “raw_text” field represents a ‘doh’).  
+* Count all instances of the substring **‘annoyed grunt’** in the “raw_text” field **AND** all instances of the substring **‘doh’** in the “normalized_text” string (recall that ‘annoyed grunt’ in the “raw_text” field represents a ‘doh’).  
 
-* Just to be crystal clear, if a record has 1 instance of ‘annoyed grunt’ in “raw_text” and 1 instance of ‘doh’ in “normalized_text” then that record counts as 2 total.  
+* For example, If a record has 1 instance of ‘annoyed grunt’ in “raw_text” and 1 instance of ‘doh’ in “normalized_text” then that record counts as 2 total.  
 
 * Output should include the **season**, **episode number within the season**, **episode title**, **location**, and **‘doh counter’** for each of the 100th, 200th, and 300th occurrences.
 
@@ -99,10 +99,10 @@ WHERE		doh_sum = 100 OR
 **Barney Gumble (character_id=18)** is a funny character on the show who is likely Homer Simpson’s best friend.  Some have argued that Barney “always seems to be stuck in Homer’s shadow” and should be given more “airtime” independent of Homer.  We will investigate this claim.  **Specifically, we want to count the number of Barney’s “appearances” with and without Homer (character_id=2).**  
 
 * A “Barney appearance” will not simply be defined as a record in “script_lines” with character_id=18 - if he has multiple lines in an episode that are relatively close to one another we want consider those lines as being part of the same “appearance.”  
-* Specifically, order your script_lines data by “episode_id” and then by “number” and consider each episode separately in your calculations.  
+* Specifically, order the script_lines data by “episode_id” and then by “number” and consider each episode separately in the calculations.  
 * First, find all records credited to Barney (character_id=18), including speaking and non-speaking lines (in what is shown below I denote this with “barney_ind”).  
 * Then, consider a “Barney appearance” to consist of the three records before the first instance of barney_ind=1, the three records after the last instance of barney_ind=1, and all records in-between as long as there is no gap of 6 consecutive records or more that are not credited to Barney.  
-* So, let’s run through a couple of examples. 
+* Examples: 
 
 ![1_barney](https://user-images.githubusercontent.com/78829814/110739832-ca371200-81e6-11eb-9e82-18f612f1a8f6.jpg)
 
