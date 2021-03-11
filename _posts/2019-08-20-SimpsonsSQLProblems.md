@@ -107,12 +107,12 @@ WHERE		doh_sum = 100 OR
 ![1_barney](https://user-images.githubusercontent.com/78829814/110739832-ca371200-81e6-11eb-9e82-18f612f1a8f6.jpg)
 
 
-* The above yellow block of records would define one “Barney appearance.”  It consists of the three records before the first “barney_ind,” the three records after the last “barney_ind,” and there is no gap of six or more consecutive records with “barney_ind”=0 in between.  Also note that since there is at least one instance of character_id=2 (Homer) in this “Barney appearance,” this appearance would be counted as one “with Homer.” 
+The above yellow block of records would define **1 “Barney appearance.”**  It consists of the three records before the first “barney_ind,” the three records after the last “barney_ind,” and there is no gap of six or more consecutive records with “barney_ind”=0 in between.  Also note that since there is at least one instance of character_id=2 (Homer) in this “Barney appearance,” this appearance would be counted as one **“with Homer.”** 
 
 
 ![2_barney](https://user-images.githubusercontent.com/78829814/110739620-63195d80-81e6-11eb-9ddf-28ce4de19bf1.jpg)
 
-* Here, we have a gap of 6 records between two records with “barney_ind”=1.  So, the blue block of records would correspond with one “Barney appearance” and the yellow block of records would correspond with a second “Barney appearance.”  Again, also note that Homer appears in both of these “Barney appearances.”
+Here, we have a gap of 6 records between two records with “barney_ind”=1.  So, **the blue block of records would correspond with 1 “Barney appearance”** and **the yellow block of records would correspond with a second “Barney appearance.”**  Again, also note that Homer appears in both of these **“Barney appearances.”**
 
 ## Query
 
