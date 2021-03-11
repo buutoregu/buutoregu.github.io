@@ -96,23 +96,23 @@ WHERE		doh_sum = 100 OR
 
 ## Problem Description
 
-**Barney Gumble (character_id=18)** is a funny character on the show who is likely Homer Simpson’s best friend.  Some have argued that Barney “always seems to be stuck in Homer’s shadow” and should be given more “airtime” independent of Homer.  We will investigate this claim.  **Specifically, we want to count the number of Barney’s “appearances” with and without Homer (character_id=2).**  
+**Barney Gumble (character_id = 18)** is a funny character on the show who is likely Homer Simpson’s best friend.  Some have argued that Barney “always seems to be stuck in Homer’s shadow” and should be given more “airtime” independent of Homer.  We will investigate this claim.  **Specifically, we want to count the number of Barney’s “appearances” with and without Homer (character_id = 2).**  
 
 * A “Barney appearance” will not simply be defined as a record in “script_lines” with character_id=18 - if he has multiple lines in an episode that are relatively close to one another we want consider those lines as being part of the same “appearance.”  
 * Specifically, order the script_lines data by “episode_id” and then by “number” and consider each episode separately in the calculations.  
-* First, find all records credited to Barney (character_id=18), including speaking and non-speaking lines (in what is shown below I denote this with “barney_ind”).  
-* Then, consider a “Barney appearance” to consist of the three records before the first instance of barney_ind=1, the three records after the last instance of barney_ind=1, and all records in-between as long as there is no gap of 6 consecutive records or more that are not credited to Barney.  
+* First, find all records credited to Barney (character_id = 18), including speaking and non-speaking lines (in what is shown below I denote this with “barney_ind”).  
+* Then, consider a “Barney appearance” to consist of the 3 records before the first instance of barney_ind = 1, the 3 records after the last instance of barney_ind = 1, and all records in-between as long as there is no gap of 6 consecutive records or more that are not credited to Barney.  
 * Examples: 
 
 ![1_barney](https://user-images.githubusercontent.com/78829814/110739832-ca371200-81e6-11eb-9e82-18f612f1a8f6.jpg)
 
 
-The above yellow block of records would define **1 “Barney appearance.”**  It consists of the three records before the first “barney_ind,” the three records after the last “barney_ind,” and there is no gap of six or more consecutive records with “barney_ind”=0 in between.  Also note that since there is at least one instance of character_id=2 (Homer) in this “Barney appearance,” this appearance would be counted as one **“with Homer.”** 
+The above yellow block of records would define **1 “Barney appearance.”**  It consists of the 3 records before the first “barney_ind,” the 3 records after the last “barney_ind,” and there is no gap of 6 or more consecutive records with “barney_ind” = 0 in between.  Also note that since there is at least 1 instance of character_id = 2 (Homer) in this “Barney appearance,” this appearance would be counted as 1 **“with Homer.”** 
 
 
 ![2_barney](https://user-images.githubusercontent.com/78829814/110739620-63195d80-81e6-11eb-9ddf-28ce4de19bf1.jpg)
 
-Here, we have a gap of 6 records between two records with “barney_ind”=1.  So, **the blue block of records would correspond with 1 “Barney appearance”** and **the yellow block of records would correspond with a second “Barney appearance.”**  Again, also note that Homer appears in both of these **“Barney appearances.”**
+Here, we have a gap of 6 records between two records with “barney_ind” = 1.  So, **the blue block of records would correspond with 1 “Barney appearance”** and **the yellow block of records would correspond with a second “Barney appearance.”**  Again, also note that Homer appears in both of these **“Barney appearances.”**
 
 ## Query
 
