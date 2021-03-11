@@ -84,12 +84,12 @@ WHERE		doh_sum = 100 OR
 ```
 
 ## Output
-```
-Season      Episode     Title                               Location            doh_sum
-3           24          Brother, Can You Spare Two Dimes?   Simpson Home        100
-7           13          Two Bad Neighbors                   Simpson Home        200
-14          17          Three Guys of the Condo             Apartment           300
-```
+
+| Season | Episode |                 Title                |   Location   | doh_sum  |
+|:------:|:-------:|:------------------------------------:|:------------:|:--------:|	
+| 3      |   24    |  Brother, Can You Spare Two Dimes?   | Simpson Home |    100   |
+| 7      |   13    |          Two Bad Neighbors           | Simpson Home |    200   |
+|14      |   17    |       Three Guys of the Condo        |  Apartment   |    300   |
 
 ***
 # Problem 2
@@ -185,13 +185,6 @@ GROUP BY 	Barney_Appearance;
 ```
 
 ## Output
-
-```
-Barney_Appearance	App_Count
-With Homer		215
-Without Homer		111
-
-```
 
 | Barney_Appearance | App_Count |	
 |:----------------- |:---------:|	
