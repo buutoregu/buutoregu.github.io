@@ -91,6 +91,7 @@ Season      Episode     Title                               Location            
 14          17          Three Guys of the Condo             Apartment           300
 ```
 
+***
 # Problem 2
 
 ## Problem Description
@@ -112,3 +113,83 @@ Season      Episode     Title                               Location            
 ![2_barney](https://user-images.githubusercontent.com/78829814/110739620-63195d80-81e6-11eb-9ddf-28ce4de19bf1.jpg)
 
 * Here, we have a gap of 6 records between two records with “barney_ind”=1.  So, the blue block of records would correspond with one “Barney appearance” and the yellow block of records would correspond with a second “Barney appearance.”  Again, also note that Homer appears in both of these “Barney appearances.”
+
+## Query
+
+```
+WITH tab1 AS
+(
+SELECT		*,
+		CASE
+		WHEN	character_id = 18 THEN 1
+		ELSE 	0
+		END AS 	barney_ind
+FROM		script_lines
+),
+tab2 AS
+(
+SELECT		*,
+		SUM(barney_ind) OVER(ORDER BY episode_id, number) as b_ind_run_sum,
+		CASE
+		WHEN	(SUM(barney_ind) OVER(PARTITION BY episode_id ORDER BY episode_id,number ROWS BETWEEN 3 PRECEDING AND 3 FOLLOWING) > 0) THEN 1
+		ELSE	0
+		END AS 	b_app_ind
+FROM		tab1
+),
+tab3 AS
+(
+SELECT		*,
+		CASE
+		WHEN	(b_app_ind = 1 AND (LAG(b_app_ind) OVER(PARTITION BY episode_id ORDER BY episode_id,number) = 0)) THEN 1
+		WHEN	(b_app_ind = 1 AND (SUM(barney_ind) OVER(PARTITION BY episode_id ORDER BY episode_id,number ROWS BETWEEN 3 PRECEDING AND 2 FOLLOWING) = 0)) THEN 1
+		ELSE 	0
+		END AS 	start_b_app
+FROM		tab2
+),
+tab4 AS
+(
+SELECT 		*,
+		SUM(start_b_app) OVER(ORDER BY episode_id, number) AS barney_groups,
+		CASE
+		WHEN	character_id = 2 THEN 1
+		ELSE 	0
+        	END AS 	homer_ind
+FROM		tab3
+WHERE		b_app_ind = 1
+),
+tab5 AS
+(
+SELECT		barney_groups,
+		MAX(homer_ind) AS homer_in_b_app
+FROM		tab4
+GROUP BY 	barney_groups
+),
+tab6 AS
+(
+SELECT		CASE
+		WHEN 	homer_in_b_app = 1 THEN 'With Homer'
+		WHEN 	homer_in_b_app = 0 THEN 'Without Homer'
+		ELSE 	NULL
+		END AS 	Barney_Appearance
+FROM		tab5
+)
+SELECT		Barney_Appearance,
+		COUNT(*) AS App_Count
+FROM		tab6
+GROUP BY 	Barney_Appearance;
+```
+
+## Output
+
+```
+Barney_Appearance	App_Count
+With Homer		215
+Without Homer		111
+
+```
+
+| Barney_Appearance | App_Count |	
+|:----------------- |:---------:|	
+| With Homer        |    215    |	
+| Without Homer     |    111    |
+
