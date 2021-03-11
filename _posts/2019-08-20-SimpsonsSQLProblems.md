@@ -1,10 +1,10 @@
 ---
 layout:     post
 title:      The Simpsons - Fun SQL Problems
-subtitle:   Analyzing The Simpsons Database by Solving 2 Fun Problems Using SQL
+subtitle:   Analyzing The Simpsons database by solving 2 fun problems using SQL
 date:       2019-08-20
 author:     Yvonne Liu
-header-img: img/simpsons.jpg
+header-img: img/simpsons1.jpg
 catalog: true
 tags:
     - SQL
