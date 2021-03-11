@@ -4,14 +4,14 @@ title:      Predicting Diamond Prices
 subtitle:   R Project 
 date:       2019-10-14 				
 author:     Yvonne Liu						
-header-img: img/background.jpg 	
+header-img: img/diamond.jpg 	
 catalog: true 						
 tags:								
     - Project
     - R
 ---
 
-The original dataset can be found on The original dataset can be found on [Kaggle](https://www.kaggle.com/shivam2503/diamonds).
+The original dataset can be found on [Kaggle](https://www.kaggle.com/shivam2503/diamonds).
 
 ## Business Understanding
 The business problem we wanted to address was to be able to quickly, efficiently, and consistently price new diamonds coming into the stock of diamond retailer. We also wanted to determine which characteristics of diamonds contribute the most to the price. 
