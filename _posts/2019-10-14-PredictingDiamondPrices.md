@@ -1,7 +1,7 @@
 ---
 layout:     post   				   
 title:      Predicting Diamond Prices 				
-subtitle:   R Project 
+subtitle:   (R) Linear regression, quantile regression, PCA
 date:       2019-10-14 				
 author:     Yvonne Liu						
 header-img: img/diamond.jpg 	
