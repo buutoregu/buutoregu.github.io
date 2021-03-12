@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      The Simpsons - Fun SQL Problems
-subtitle:   Hidden fun facts in The Simpsons
+subtitle:   (SQL) Hidden fun facts in The Simpsons
 date:       2019-08-20
 author:     Yvonne Liu
 header-img: img/simpsons2.jpg
