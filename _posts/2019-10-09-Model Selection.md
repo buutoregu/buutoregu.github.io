@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      Model Selection
-subtitle:   OOS performance and cross validation
+subtitle:   (R) OOS performance and cross validation
 date:       2019-10-09
 author:     Yvonne Liu
 header-img: img/post-bg-ios9-web.jpg
