@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      Austin-Bergstrom International Expansion Plan
-subtitle:   Using visualizations developing business strategies
+subtitle:   (Tableau) Using visualizations developing business strategies
 date:       2019-12-09
 author:     Yvonne Liu
 header-img: img/ausairport.jpg
