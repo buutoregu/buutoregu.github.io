@@ -9,6 +9,9 @@ catalog: true
 tags:
     - SQL
 ---
+The Simpsons database consists of 4 main tables: **characters, episodes, locations and script_lines**.
+The script_line table has following fields: **id** (primary key), **episode_id** (foreign key), **number**, **character_id** (foreign key), **location_id** (foreign key), **raw_text** and **normalized_text**.
+
 
 # Problem 1
 
