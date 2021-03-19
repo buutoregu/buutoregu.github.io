@@ -19,12 +19,13 @@ The "gaps and islands" problem is a scenario in which you need to identify group
 Here, we have two tables:
 
 Accounts: 
+
 | Column Name | Type     | 
 |:-----------:|:--------:|
 | id          |   int    |  
 | name        |  varchar |
 
-* the id is the primary key for this table.
+* id is the primary key for this table.
 * This table contains the account id and the user name of each account.
 
 Logins:
@@ -46,4 +47,41 @@ Logins:
 
 ## Query
 
+```
+WITH c1 AS 
+(
+SELECT      id, 
+            login_date, 
+            DENSE_RANK() OVER(PARTITION BY id ORDER BY login_date) AS rank1
+FROM        Logins
+ORDER BY    id, login_date
+),
 
+c2 AS 
+(
+SELECT      id, 
+            login_date, 
+            rank1, 
+            DATE_SUB(login_date, INTERVAL rank1 DAY) as rank2
+FROM        c1
+),
+
+c3 AS 
+(
+SELECT      id, 
+            MIN(login_date) AS start_date, 
+            MAX(login_date) AS end_date, 
+            rank2, 
+            COUNT(DISTINCT login_date) as consecutive_days
+FROM        c2
+GROUP BY    id, rank2
+HAVING      COUNT(DISTINCT login_date) >= 5
+)
+
+SELECT      DISTINCT c3.id, name
+FROM        c3
+INNER JOIN  Accounts as a
+ON          a.id = c3.id
+ORDER BY    c3.id
+
+```
