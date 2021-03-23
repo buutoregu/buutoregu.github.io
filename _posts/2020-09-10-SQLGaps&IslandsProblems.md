@@ -129,3 +129,11 @@ In the third CTE (c3), we have the start_date (when the user begins to login con
 | id | start_date   | end_date     | sequence_grouping | consecutive_days |
 |:--:|:------------:|:------------:|:-----------------:|:----------------:|
 | 7  | 2020-05-30   | 2020-06-03   |   2020-05-29      | 5                |
+
+Finally, by joining to the Accounts table, we have the final result table:
+
+| id | name       |
+|:--:|:----------:|
+| 7  | Jonathan   |
+
+Using this solution, We could identify active users who logged in to their accounts for n or more days by simply changing the HAVING clause in c3. 
