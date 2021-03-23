@@ -12,11 +12,16 @@ tags:
 
 # Description of Gaps & Islands Problems
 
-The "gaps and islands" problem is a scenario in which you need to identify groups of continuous data (“islands”) and groups where the data is missing (“gaps”) across a particular sequence.
+Gaps and islands problems involve **missing values in a sequence**. Solving the **gaps** problem requires **finding the ranges of missing values**, whereas solving the **islands** problem involves **finding the ranges of existing values**.
 
-# Case Study
+The sequences of values in gaps and islands problems can be **numeric**, such as a sequence of order IDs, some of which were deleted. An example of the gaps problem in this case would be finding the ranges of deleted order IDs. An example of the islands problem would be finding the ranges of existing IDs.
 
-Here, we have two tables:
+The sequences involved can also be **temporal**, such as order dates, some of which are missing due to inactive periods (weekends, holidays). Finding periods of inactivity is an example of the gaps problem, and finding periods of activity is an example of the islands problem. Another example of a temporal sequence is a process that needs to report every fixed interval of time that it is online (for example, every 4 hours). Finding unavailability and availability periods is another example of gaps and islands problems.
+
+
+# Sample Data & Desired Results
+
+Here, we have two tables - Accounts & Logins. We want to identify the id and name of active users who logged in to their accounts for 5 or more consecutive days.
 
 Accounts: 
 
@@ -38,14 +43,7 @@ Logins:
 * There is no primary key for this table, it may contain duplicates.
 * This table contains the account id of the user who logged in and the login date. A user may log in multiple times in the day.
 
-## Problem
-
-**Write an SQL query to find the id and name of active users.**
-
-* Active users are those who logged in to their accounts for 5 or more consecutive days.
-* Return the result table ordered by the id.
-
-## Query
+## Constructing the Query
 
 ```
 WITH c1 AS 
