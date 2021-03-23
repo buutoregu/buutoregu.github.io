@@ -4,7 +4,7 @@ title:      SQL Gaps & Islands Problems
 subtitle:   Identify continuous and missing values in a sequence
 date:       2020-09-10
 author:     Yvonne Liu
-header-img: img/simpsons2.jpg
+header-img: img/post-bg-ios9-web.jpg
 catalog: true
 tags:
     - SQL
