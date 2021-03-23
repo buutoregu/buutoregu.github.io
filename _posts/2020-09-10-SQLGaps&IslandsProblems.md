@@ -21,24 +21,32 @@ The sequences involved can also be **temporal**, such as order dates, some of wh
 
 # Sample Data & Desired Results
 
-Here, we have two tables - Accounts & Logins. We want to identify the id and name of active users who logged in to their accounts for 5 or more consecutive days.
+Here, we have two tables - Accounts & Logins. We want to identify the id and name of **active users who logged in to their accounts for 5 or more consecutive days**.
 
-Accounts: 
+Accounts table:
 
-| Column Name | Type     | 
-|:-----------:|:--------:|
-| id          |   int    |  
-| name        |  varchar |
+| id | name     |
+|:--:|:--------:|
+| 1  | Winston  |
+| 7  | Jonathan |
 
 * id is the primary key for this table.
 * This table contains the account id and the user name of each account.
 
-Logins:
 
-| Column Name    | Type     | 
-|:--------------:|:--------:|
-| id             |   int    |  
-| login_date     |  date    |
+Logins table:
+
+| id | login_date |
+|:--:|:----------:|
+| 7  | 2020-05-30 |
+| 1  | 2020-05-30 |
+| 7  | 2020-05-31 |
+| 7  | 2020-06-01 |
+| 7  | 2020-06-02 |
+| 7  | 2020-06-02 |
+| 7  | 2020-06-03 |
+| 1  | 2020-06-07 |
+| 7  | 2020-06-10 |
 
 * There is no primary key for this table, it may contain duplicates.
 * This table contains the account id of the user who logged in and the login date. A user may log in multiple times in the day.
@@ -60,7 +68,7 @@ c2 AS
 SELECT      id, 
             login_date, 
             rank1, 
-            DATE_SUB(login_date, INTERVAL rank1 DAY) as rank2
+            DATE_SUB(login_date, INTERVAL rank1 DAY) as sequence_grouping
 FROM        c1
 ),
 
@@ -69,10 +77,10 @@ c3 AS
 SELECT      id, 
             MIN(login_date) AS start_date, 
             MAX(login_date) AS end_date, 
-            rank2, 
+            sequence_grouping, 
             COUNT(DISTINCT login_date) as consecutive_days
 FROM        c2
-GROUP BY    id, rank2
+GROUP BY    id, sequence_grouping
 HAVING      COUNT(DISTINCT login_date) >= 5
 )
 
@@ -83,3 +91,41 @@ ON          a.id = c3.id
 ORDER BY    c3.id
 
 ```
+
+The first CTE (c1) will return a result table like this:
+
+| id | login_date | rank1 |
+|:--:|:----------:|:-----:|
+| 1  | 2020-05-30 | 1     |
+| 1  | 2020-06-07 | 2     |
+| 7  | 2020-05-30 | 1     |
+| 7  | 2020-05-31 | 2     |
+| 7  | 2020-06-01 | 3     |
+| 7  | 2020-06-02 | 4     |
+| 7  | 2020-06-02 | 4     |
+| 7  | 2020-06-03 | 5     |
+| 7  | 2020-06-10 | 6     |
+
+* Here, we use a DENSE_RANK() because the Logins table has duplicates. We can also use ROW_NUMBER() if there are no duplicates.
+
+In the second CTE (c2), we use DATE_SUB() to subtract the rank1 number from login_date, which results in the following table.
+
+| id | login_date | rank1 | sequence_grouping|
+|:--:|:----------:|:-----:|:----------------:|
+| 1  | 2020-05-30 | 1     | 2020-05-29       |
+| 1  | 2020-06-07 | 2     | 2020-06-05       |
+| 7  | 2020-05-30 | 1     | 2020-05-29       |
+| 7  | 2020-05-31 | 2     | 2020-05-29       |
+| 7  | 2020-06-01 | 3     | 2020-05-29       |
+| 7  | 2020-06-02 | 4     | 2020-05-29       |
+| 7  | 2020-06-02 | 4     | 2020-05-29       |
+| 7  | 2020-06-03 | 5     | 2020-05-29       |
+| 7  | 2020-06-10 | 6     | 2020-06-04       |
+
+* The sequence_grouping will be the same for all records in the same "island".
+
+In the third CTE (c3), we have the start_date (when the user begins to login consecutively), end_date, and consecutive_days (number of days user login consecutively). 
+
+| id | start_date   | end_date     | sequence_grouping | consecutive_days |
+|:--:|:------------:|:------------:|:-----------------:|:----------------:|
+| 7  | 2020-05-30   | 2020-06-03   |   2020-05-29      | 5                |
